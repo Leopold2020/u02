@@ -1,0 +1,47 @@
+.index-holder {
+    display: flex;
+}
+
+.index-message {
+    margin-bottom: 1rem;
+}
+
+.index-gradient-text {
+    background: linear-gradient(to right, var(--blue), var(--pink));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.index-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 12rem;
+    height: 12rem;
+    max-width: 600px;
+    border-radius: 50%;
+    background: linear-gradient(to top, var(--blue), var(--pink));
+}
+
+.index-image {
+    width: 95%;
+    max-width: 600px;
+    border-radius: 50%;
+}
+
+@media (min-width: 768px) {
+    .index-holder {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .index-message {
+        font-size: 2rem;
+    }
+    
+    .index-image-container {
+        width: 20rem;
+        height: 20rem;
+    }
+}

@@ -1,0 +1,49 @@
+.contact-mobile-message {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.contact-mobile-message h1 {
+    margin-bottom: 0.5rem;
+}
+
+.contact-mobile-message h2 {
+    background: linear-gradient(to right, var(--blue), var(--pink));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.contact-desktop-message {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .contact-mobile-message {
+        display: none;
+    }
+
+    .contact-desktop-message {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .contact-desktop-message h1 {
+        font-size: 3.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .contact-desktop-message h2 {
+        background: linear-gradient(to right, var(--blue), var(--pink));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        font-size: 3rem;
+    }
+}

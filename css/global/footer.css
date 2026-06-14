@@ -1,0 +1,17 @@
+footer {
+    text-align: center;
+    padding: 1em 0;
+    margin-top: 2em;
+}
+
+.footer-text .footer-gradient-text{
+    font-size: 0.9em;
+    color: #666666;
+}
+
+.footer-gradient-text {
+    background: linear-gradient(to right, var(--blue), var(--pink));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
