@@ -12,8 +12,8 @@
     <body>
         <nav class="navbar">
             <div>
-                <h3 class="gradient-text">{007}</h3>
-                <h5 class="gradient-text">pavang</h5>
+                <h1 class="gradient-text">{007}</h1>
+                <h1 class="gradient-text">pavang</h1>
             </div>
             <input id="menu-toggle" type="checkbox">
             <label class="menu-button-container" for="menu-toggle">
@@ -22,7 +22,6 @@
             <ul class="menu">
                 <li><a href="#">Home</a></li>
                 <li><a href="./pages/about_me.html">About Me</a></li>
-                <li><a href="#">Tech Stack</a></li>
                 <li><a href="./pages/projects.html">Projects</a></li>
                 <li><a href="./pages/contact.html">Contact</a></li>
                 <li class="navbar-icon-holder">
@@ -38,7 +37,7 @@
                 <div class="index-message">
                     <h1>Hi,👋</h1>
                     <h1>My name is</h1>
-                    <h1>Pavan MG</h1>
+                    <h1>Oskar Svedlund</h1>
                     <h1>I build things on the web</h1>
                 </div>
                 <div class="index-image-container">
@@ -47,7 +46,36 @@
             </section>
         </main>
         <footer>
-            <p class="footer-text">Designed and built by Pavan MG with </p><p class="footer-gradient-text">Love & Coffee</p>
+            <p class="footer-text">Designed and built by Oskar Svedlund with </p><p class="footer-gradient-text">Love & Coffee</p>
         </footer>
+        <script>
+            // Navbar functionality
+            const menuToggle = document.getElementById('menu-toggle');
+            const menuButtonContainer = document.querySelector('.menu-button-container');
+            const menu = document.querySelector('.menu');
+
+            menuButtonContainer.addEventListener('click', function(e) {
+                e.preventDefault();
+                menuToggle.checked = !menuToggle.checked;
+            });
+
+            // Close menu when a link is clicked
+            const menuLinks = menu.querySelectorAll('a');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    menuToggle.checked = false;
+                });
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                const isClickInsideMenu = menu.contains(event.target);
+                const isClickInsideButton = menuButtonContainer.contains(event.target);
+                
+                if (!isClickInsideMenu && !isClickInsideButton && menuToggle.checked) {
+                    menuToggle.checked = false;
+                }
+            });
+        </script>
     </body>
 </html>

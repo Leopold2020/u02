@@ -12,8 +12,8 @@
     <body>
         <nav class="navbar">
             <div>
-                <h3 class="gradient-text">{007}</h3>
-                <h5 class="gradient-text">pavang</h5>
+                <h1 class="gradient-text">{007}</h1>
+                <h1 class="gradient-text">pavang</h1>
             </div>
             <input id="menu-toggle" type="checkbox">
             <label class='menu-button-container' for="menu-toggle">
@@ -22,25 +22,58 @@
             <ul class="menu">
                 <li><a href="../index.html">Home</a></li>
                 <li><a href="./about_me.html">About Me</a></li>
-                <li><a href="#">Tech Stack</a></li>
                 <li><a href="./projects.html">Projects</a></li>
                 <li><a href="#">Contact</a></li>
+                <li class="navbar-icon-holder">
+                    <img src="../images/github_icon.png" alt="github icon">
+                    <img src="../images/twitter_icon.png" alt="twitter icon">
+                    <img src="../images/linkedin_icon.png" alt="linkedin icon">
+                </li>
             </ul>
         </nav>
         <main>
             <section class="contact-mobile-message">
                 <h1>For any questions please drop a mail</h1>
-                <h2>hi@example.com</h2>
+                <h2>oskar.svedlund@chasacademy.com</h2>
                 <p>or</p>
                 <h2>+91 12345 67890</h2>
             </section>
             <section class="contact-desktop-message">
-                <h1>For any questions please mail us:</h1>
-                <h2>hi@pavanmg.in</h2>
+                <h1>For any questions please mail me:</h1>
+                <h2>oskar.svedlund@chasacademy.com</h2>
             </section>
         </main>
         <footer>
-            <p class="footer-text">Designed and built by Pavan MG with </p><p class="footer-gradient-text">Love & Coffee</p>
+            <p class="footer-text">Designed and built by Oskar Svedlund with </p><p class="footer-gradient-text">Love & Coffee</p>
         </footer>
+        <script>
+            // Navbar functionality
+            const menuToggle = document.getElementById('menu-toggle');
+            const menuButtonContainer = document.querySelector('.menu-button-container');
+            const menu = document.querySelector('.menu');
+
+            menuButtonContainer.addEventListener('click', function(e) {
+                e.preventDefault();
+                menuToggle.checked = !menuToggle.checked;
+            });
+
+            // Close menu when a link is clicked
+            const menuLinks = menu.querySelectorAll('a');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    menuToggle.checked = false;
+                });
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                const isClickInsideMenu = menu.contains(event.target);
+                const isClickInsideButton = menuButtonContainer.contains(event.target);
+                
+                if (!isClickInsideMenu && !isClickInsideButton && menuToggle.checked) {
+                    menuToggle.checked = false;
+                }
+            });
+        </script>
     </body>
 </html>

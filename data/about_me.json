@@ -1,0 +1,29 @@
+{
+  "about": "I am a student at Chas Academy, pursuing a career in web development. I have a passion for creating innovative solutions and continuously strive to improve my skills.",
+  "experience": [
+    {
+      "name": "NTI",
+      "location": "Nacka Strand",
+      "status": "Full time",
+      "date": "2020 - 2023"
+    },
+    {
+      "name": "NTI gymnasieingenjör",
+      "location": "Nacka Strand",
+      "status": "Full time",
+      "date": "2023 - 2024"
+    },
+    {
+      "name": "KTH basår",
+      "location": "Flemingsberg",
+      "status": "Full time",
+      "date": "2024 - 2025"
+    },
+    {
+      "name": "Chas academy",
+      "location": "Globen",
+      "status": "Full time",
+      "date": "2025 - NOW"
+    }
+  ]
+}

@@ -9,11 +9,12 @@
         <link rel="stylesheet" href="../css/global/footer.css">
         <link rel="stylesheet" href="../css/pages/about_me.css">
     </head>
+    
     <body>
         <nav class="navbar">
             <div>
-                <h3 class="gradient-text">{007}</h3>
-                <h5 class="gradient-text">pavang</h5>
+                <h1 class="gradient-text">{007}</h1>
+                <h1 class="gradient-text">pavang</h1>
             </div>
             <input id="menu-toggle" type="checkbox">
             <label class='menu-button-container' for="menu-toggle">
@@ -22,105 +23,131 @@
             <ul class="menu">
                 <li><a href="../index.html">Home</a></li>
                 <li><a href="#">About Me</a></li>
-                <li><a href="#">Tech Stack</a></li>
                 <li><a href="./projects.html">Projects</a></li>
                 <li><a href="./contact.html">Contact</a></li>
+                <li class="navbar-icon-holder">
+                    <img src="../images/github_icon.png" alt="github icon">
+                    <img src="../images/twitter_icon.png" alt="twitter icon">
+                    <img src="../images/linkedin_icon.png" alt="linkedin icon">
+                </li>
             </ul>
         </nav>
         <main>
             <section>
                 <h2 class="about-title">About me</h2>
-                <p class="about-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum amet ullam odit, adipisci maiores similique explicabo alias ratione nam blanditiis repudiandae consequatur, architecto officia temporibus excepturi maxime eos cum. Ab.</p>
+                <p class="about-text" id="aboutText"></p>
             </section>
             <section>
                 <h2 class="about-title">Experience</h2>
-                <div class="about-info-holder">
-
-                    <div class="about-info-container">
-                        <div class="about-specifics-time">
-                            <div class="about-specifics-assignment">
-                                <h4><img src="../images/building_icon.png" alt="">NTI</h4>
-                            </div>
-                            <div class="about-place">
-                                <p><img src="../images/location_icon.png" alt="">Nacka Strand</p>
-                            </div>
-                        </div>
-                        <div class="about-time-place">
-                            <p class="about-time">Full time</p>
-                            <p><img src="../images/date_icon.png" alt="">2020 - 2023</p>
-                        </div>
-                    </div>
-
-                    <div class="about-info-container">
-                        <div class="about-specifics-time">
-                            <div class="about-specifics-assignment">
-                                <h4><img src="../images/building_icon.png" alt="">NTI gymnasieingenjör</h4>
-                            </div>
-                            <div class="about-place">
-                                <p><img src="../images/location_icon.png" alt="">Nacka Strand</p>
-                            </div>
-                        </div>
-                        <div class="about-time-place">
-                            <p class="about-time">Full time</p>
-                            <p><img src="../images/date_icon.png" alt="">2023 - 2024</p>
-                        </div>
-                    </div>
-
-                    <div class="about-info-container">
-                        <div class="about-specifics-time">
-                            <div class="about-specifics-assignment">
-                                <h4><img src="../images/building_icon.png" alt="">KTH basår</h4>
-                            </div>
-                            <div class="about-place">
-                                <p><img src="../images/location_icon.png" alt="">Flemingsberg</p>
-                            </div>
-                        </div>
-                        <div class="about-time-place">
-                            <p class="about-time">Full time</p>
-                            <p><img src="../images/date_icon.png" alt="">2024 - 2025</p>
-                        </div>
+                <div class="about-info-holder" id="experienceList"></div>
+                
+                <!-- Modal -->
+                <div id="aboutModal" class="about-modal">
+                    <div class="about-modal-overlay"></div>
+                    <div class="about-modal-content">
+                        <button class="about-modal-close">&times;</button>
+                        <div id="modalBody"></div>
                     </div>
                 </div>
             </section>
             <section>
                 <h2 class="about-title">Education</h2>
-                <div class="about-info-holder">
- 
-                    <div class="about-info-container">
-                        <div class="about-specifics-time">
-                            <div class="about-specifics-assignment">
-                                <h4><img src="../images/building_icon.png" alt="">Chas academy</h4>
-                            </div>
-                            <div class="about-place">
-                                <p><img src="../images/location_icon.png" alt="">Globen</p>
-                            </div>
-                        </div>
-                        <div class="about-time-place">
-                            <p class="about-time">Full time</p>
-                            <p><img src="../images/date_icon.png" alt="">2025 - NOW</p>
-                        </div>
-                    </div>
-                    
-                    <!-- <div class="about-info-container">
-                        <div class="about-specifics-time">
-                            <div class="about-specifics-assignment">
-                                <h4><img src="../images/building_icon.png" alt="">Junior Web Developer</h4>
-                            </div>
-                            <div class="about-place">
-                                <p><img src="../images/location_icon.png" alt="">Dr. Rajkumar's Learning App</p>
-                                <p>bengaluru</p>
-                            </div>
-                        </div>
-                        <div class="about-time-place">
-                            <p class="about-time">Full time</p>
-                            <p><img src="../images/date_icon.png" alt="">Sep 2021 -Dec 2021</p>
-                        </div>
-                    </div> -->
-                </div>
-                </section>
+                <div class="about-info-holder" id="educationList"></div>
+            </section>
             </main>
             <footer>
-            <p class="footer-text">Designed and built by Oskar with </p><p class="footer-gradient-text">Love & Swet</p>
+            <p class="footer-text">Designed and built by Oskar Svedlund with </p><p class="footer-gradient-text">Love & Coffee</p>
         </footer>
+        <script>
+            async function loadAboutPageContent() {
+                try {
+                    const response = await fetch('../data/about_me.json');
+                    const data = await response.json();
+
+                    document.getElementById('aboutText').textContent = data.about;
+
+                    const experienceList = document.getElementById('experienceList');
+                    experienceList.innerHTML = '';
+                    data.experience.forEach(item => {
+                        const container = document.createElement('div');
+                        container.className = 'about-info-container modal-trigger';
+                        container.innerHTML = `
+                            <div class="about-specifics-time">
+                                <div class="about-specifics-assignment">
+                                    <h4><img src="../images/building_icon.png" alt="">${item.name}</h4>
+                                </div>
+                                <div class="about-place">
+                                    <p><img src="../images/location_icon.png" alt="">${item.location}</p>
+                                </div>
+                            </div>
+                            <div class="about-time-place">
+                                <p class="about-time">${item.status}</p>
+                                <p><img src="../images/date_icon.png" alt="">${item.date}</p>
+                            </div>
+                        `;
+                        experienceList.appendChild(container);
+                    });
+
+                    attachModalListeners();
+                } catch (error) {
+                    console.error('Unable to load about page content:', error);
+                }
+            }
+
+            function attachModalListeners() {
+                const modal = document.getElementById('aboutModal');
+                const modalBody = document.getElementById('modalBody');
+                const closeBtn = document.querySelector('.about-modal-close');
+                const modalTriggers = document.querySelectorAll('.modal-trigger');
+
+                modalTriggers.forEach(trigger => {
+                    trigger.addEventListener('click', function() {
+                        const clone = this.cloneNode(true);
+                        clone.classList.remove('modal-trigger');
+                        modalBody.innerHTML = '';
+                        modalBody.appendChild(clone);
+                        modal.classList.add('active');
+                    });
+                });
+
+                closeBtn.addEventListener('click', function() {
+                    modal.classList.remove('active');
+                });
+
+                modal.querySelector('.about-modal-overlay').addEventListener('click', function() {
+                    modal.classList.remove('active');
+                });
+            }
+
+            function setupNavbarToggle() {
+                const menuToggle = document.getElementById('menu-toggle');
+                const menuButtonContainer = document.querySelector('.menu-button-container');
+                const menu = document.querySelector('.menu');
+
+                menuButtonContainer.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    menuToggle.checked = !menuToggle.checked;
+                });
+
+                const menuLinks = menu.querySelectorAll('a');
+                menuLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        menuToggle.checked = false;
+                    });
+                });
+
+                document.addEventListener('click', function(event) {
+                    const isClickInsideMenu = menu.contains(event.target);
+                    const isClickInsideButton = menuButtonContainer.contains(event.target);
+
+                    if (!isClickInsideMenu && !isClickInsideButton && menuToggle.checked) {
+                        menuToggle.checked = false;
+                    }
+                });
+            }
+
+            setupNavbarToggle();
+            loadAboutPageContent();
+        </script>
     </body>
 </html>
